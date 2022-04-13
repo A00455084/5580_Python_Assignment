@@ -30,5 +30,14 @@ print(data_df.head())
 data_df['Date'] = pd.to_datetime(data_df['Date'],unit='ms',origin='unix')
 data_df.set_index('Date',inplace=True)
 
+
+# calculate avg price over time frame
+avg_price = data_df['Price'].mean()
+
+# for custom legend name according to currency selected
+data_df.rename(columns={'Price': currency.upper()},inplace=True)
+
 # plot line chart
 st.line_chart(data_df)
+
+st.write("Average price during this time was ",avg_price," ",currency)
