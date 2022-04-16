@@ -40,4 +40,4 @@ data_df.rename(columns={'Price': currency.upper()},inplace=True)
 # plot line chart
 st.line_chart(data_df)
 
-st.write("Average price during this time was ",avg_price," ",currency)
+st.write("Average price during this time was ",str(avg_price)," ",currency)
