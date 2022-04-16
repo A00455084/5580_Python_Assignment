@@ -6,7 +6,7 @@ import numpy as np
 st.title('Bitcoin Prices')
 
 # slider input for no of days
-days = st.slider('No. of days', 0, 365, 90)
+days = st.slider('No. of days', 1, 365, 90)
 
 # radio button input for currency
 currency = st.radio(
