@@ -24,6 +24,7 @@ if response.status_code==200:
     data_df = pd.DataFrame(data=data['prices'],columns=['Date','Price'])
     print(data_df.head())
     data_df['Date'] = pd.to_datetime(data_df['Date'],unit='ms',origin='unix')
+    data_df.sort_values(by="Date",inplace=True)
     data_df.set_index('Date',inplace=True)
     # calculate avg price over time frame
     avg_price = data_df['Price'].mean()
