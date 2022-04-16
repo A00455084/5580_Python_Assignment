@@ -15,7 +15,7 @@ currency = st.radio(
 
 # endpoint
 url = "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart"
-payload={'vs_currency':currency,'days':days,'interval':'daily'}
+payload={'vs_currency':currency,'days':str(days),'interval':'daily'}
 headers = {}
 response = requests.request("GET", url, headers=headers, params=payload)
 if response.status_code==200:
