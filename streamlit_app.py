@@ -21,7 +21,8 @@ response = requests.request("GET", url, headers=headers, params=payload)
 if response.status_code==200:
     data = response.json()
     # prepare dataframe
-    data_df = pd.DataFrame(data=data['prices'],columns=['Date','Price'])
+    # we remove the last value of response array since the api request will return data for 91 days and not 90 days
+    data_df = pd.DataFrame(data=data['prices'][:-1],columns=['Date','Price'])
     print(data_df.head())
     data_df['Date'] = pd.to_datetime(data_df['Date'],unit='ms',origin='unix')
     data_df.sort_values(by="Date",inplace=True)
